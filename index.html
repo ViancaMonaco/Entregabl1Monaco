@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Monaco</title>
-    <script src ="main.js"></script>
+    <script src ="js/mainv2.js" defer></script>
 
 </head>
 <body>
     <h1>Nutri.com</h1>
+    <div id="welcome"> 
+        <h2>Bienvenido a Nutri.com</h2>
+        <p>En este sitio podrás encontrar recetas saludables, consejos de nutrición y mucho más para llevar una vida sana.</p>  
+        <button id="logIn">Inicia sesión</button>
+        <button id="registro">Regístrate</button>
+    </div>
+    
+    <div id="loginSection" style="display:none;">
+        <form id="loginForm">
+            <input type="text" placeholder="User Name">
+            <input type="password" placeholder="password">
+            <button type="submit">Enviar</button>
+        </form>
+        <button id="forgotBtn" type="button">Forgot my password</button>
+    </div>
+
 </body>
 </html>
