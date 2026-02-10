@@ -11,5 +11,9 @@ const usersArry = []
 
 
 export function logIn(user, pass){
-
+ const userValidation = usersArry.find(userObj => userObj.username===user && userObj.password===pass)
+ if (userValidation){
+    return true
+ }
+ return false
 }

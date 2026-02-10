@@ -1,4 +1,6 @@
 import { renderLogIn } from "./ui.js"
+import { logIn } from "./auth.js"
+
 
 function initLogIn(){
     const loginForm = document.getElementById("loginForm")
@@ -11,15 +13,19 @@ function initLogIn(){
         const usuario = userInput.value
         const password = passInput.value
         const errorMsg = document.getElementById("loginError")
-        if (!logIn(usuario, password)){
+        if (logIn(usuario, password)){
+            errorMsg.style.display = "none"
+            localStorage.setItem("loggedUser", usuario)
+        }
+        else{
             errorMsg.style.display = "block"
             return
         }
-        errorMsg.style.display = "none"
+        
     }
 }
 
-function main(){
+function ingreso(){
     const loginBtn = document.getElementById("login")
     const registroBtn = document.getElementById("registro")
 
@@ -30,6 +36,16 @@ function main(){
 
     registroBtn.onclick = () => {
         //llamo a ui.js
+    }
+}
+
+function main(){
+    const loggedUser = localStorage.getItem("loggedUser")
+
+    if (loggedUser) {
+    // mostrar pantalla principal directamente
+    } else {
+    ingreso()
     }
 }
 
