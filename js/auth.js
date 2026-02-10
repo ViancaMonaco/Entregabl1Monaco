@@ -7,7 +7,11 @@ class User{
     }
 }
 
-const usersArry = []
+const usersArry = [ new User("Test", "test@mail.com", "testuser", "1234")]
+
+function userExist(email){
+  return usersArry.some(userObj => userObj.mail === email)
+}
 
 
 export function logIn(user, pass){
@@ -16,4 +20,13 @@ export function logIn(user, pass){
     return true
  }
  return false
+}
+
+export function register(name, email, userName, password){
+    if (userExist(email)){
+        return false
+    }
+    const user = new User(name,email,userName,password)
+    usersArry.push(user)
+    return true
 }
