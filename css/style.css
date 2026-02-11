@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f5;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    margin: 0;
+    font-size: 28px;
+    color: #4CAF50; /* verde claro elegante */
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-buttons button {
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+/* Botón Login */
+#loginBtn {
+    background-color: #2E7D32; /* verde más oscuro */
+    color: white;
+}
+
+#loginBtn:hover {
+    background-color: #256628;
+}
+
+/* Botón Register */
+#registerBtn {
+    background-color: #66BB6A;
+    color: white;
+}
+
+#registerBtn:hover {
+    background-color: #57a85b;
+}
+
+/* Línea divisoria */
+hr {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 0;
+}
+
+/* Welcome Section */
+.welcome-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+.welcome-section h2 {
+    background-color: white;
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    color: #2E7D32;
+    font-weight: 500;
+}

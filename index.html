@@ -2,55 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador Monaco</title>
-    <script type="module" src="js/mainP.js" defer></script>
-
+    <title>Nutri Monaco</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Nutri.com</h1>
-    <div id="welcome"> 
-        <h2>Bienvenido a Nutri.com</h2>
-        <p>En este sitio podrás encontrar recetas saludables, consejos de nutrición y mucho más para llevar una vida sana.</p>  
-        <button id="login">Inicia sesión</button>
-        <button id="registro">Regístrate</button>
-    </div>
-    
-    <div id="loginSection" style="display:none;">
-        <form id="loginForm">
-            <input id = "user" type="text" placeholder="User Name">
-            <input id = "pass" type="password" placeholder="password">
-            <button type="submit">Enviar</button>
-        </form>
-        <p id="loginError" style="color:rgb(255, 0, 0); display:none;">
-        Usuario o contraseña incorrectos
-        </p>
-        <button id="forgotBtn" type="button">Forgot my password</button>
-    </div>
 
-    <div id="registerSection" style="display: none;">
-        <form id="registerForm">
-            <input id="name" type="text" placeholder="Name">
-            <input id="email" type="email" placeholder="email">
-            <input id="username" type="text" placeholder="username">
-            <input id="password" type="password" placeholder="password">
-            <button type="submit">Send</button>
-        </form>
-        <p id="registerError" style="color: red; display: none;">
-            Error usuario ya registrado
-        </p>
-    </div>
+    <header class="navbar">
+        <h1 class="logo">Nutri Monaco</h1>
+        <div class="nav-buttons">
+            <button id="loginBtn">Log In</button>
+            <button id="registerBtn">Register</button>
+        </div>
+    </header>
 
-    <div id="menuSection" style="display: none;">
-        <button id="option1">1.Ingresar peso </button>
-        <button id="option2">2.Calcular IMC</button>
-        <button id="option3">3.Ejercicio diario a realizar </button>
-        <button id="option4">4.Cerrar sesion </button>
-    </div>
+    <hr>
 
-    <div id="weightSection" style="display: none;">
-        <input id="weight" type="number" placeholder="width(kg)">
-    </div>
+    <main class="welcome-section">
+        <h2>Welcome, please log in to access your account</h2>
+    </main>
 
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ class User{
         this.mail = mail
         this.username = username
         this.password = password
+        this.weights = []
     }
 }
 
@@ -29,4 +30,23 @@ export function register(name, email, userName, password){
     const user = new User(name,email,userName,password)
     usersArry.push(user)
     return true
+}
+
+export function addWeight(username, weight){
+    const user = usersArry.find(user => user.username === username)
+    if(user){
+        user.weights.push(weight)
+        return true
+    }
+    return false
+}
+
+export function calculateIMC(height, username){
+    const user = usersArray.find(u => u.username == username)
+    if (user && user.weights.length > 0){
+        const lastWeight = user.weights.at(-1)
+        const imc = lastWeight / ((height / 100) ** 2)
+        return imc
+    }
+    return -1
 }

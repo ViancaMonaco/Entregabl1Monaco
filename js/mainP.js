@@ -1,7 +1,10 @@
-import { renderLogIn } from "./ui.js"
+import { renderIMC, renderIMCResult, renderLogIn } from "./ui.js"
 import { renderRegister } from "./ui.js"
-import { logIn } from "./auth.js"
+import { addWeight, logIn } from "./auth.js"
 import { register } from "./auth.js"
+import {renderMainMenu} from "./ui.js"
+import {renderIMC} from "./ui.js"
+import { calculateIMC } from "./auth.js"
 
 
 function initLogIn(){
@@ -15,9 +18,12 @@ function initLogIn(){
         const usuario = userInput.value
         const password = passInput.value
         const errorMsg = document.getElementById("loginError")
+        
         if (logIn(usuario, password)){
             errorMsg.style.display = "none"
             localStorage.setItem("loggedUser", usuario)
+            renderMainMenu()
+            initMainMenu()
         }
         else{
             errorMsg.style.display = "block"
@@ -53,6 +59,31 @@ function initRegister(){
     }
 }
 
+function initWeight(){
+  const weightForm = document.getElementById("weightForm")
+  const weightInput = document.getElementById("weight")
+
+  weightForm.onsubmit = (e) => {
+    e.preventDefault()
+    const weight = parseFloat(weightInput.value)
+    const loggedUser = localStorage.getItem("loggedUser")
+    addWeight(loggedUser, weight)
+  }
+}
+
+function initIMC(){
+    const imcForm = document.getElementById("imcForm")
+    const heightInput = document.getElementById("height")
+
+    imcForm.onsubmit = (e) => {
+        e.preventDefault()
+        const height = parseFloat(heightInput.value)
+        const loggedUser = localStorage.getItem("loggedUser")
+        const imc = calculateIMC(height, loggedUser)
+        renderIMCResult(imc)
+    }
+}
+
 function ingreso(){
     const loginBtn = document.getElementById("login")
     const registroBtn = document.getElementById("registro")
@@ -69,7 +100,7 @@ function ingreso(){
     }
 }
 
-function mainMenu(){
+function initMainMenu(){
     const pesoBtn = document.getElementById("option1")
     const imcBtn = document.getElementById("option2")
     const ejerBtn = document.getElementById("option3")
@@ -77,9 +108,11 @@ function mainMenu(){
 
     pesoBtn.onclick = () =>{
         renderWeight()
+        initWeight()
     }
     imcBtn.onclick = () =>{
-
+        renderIMC()
+        initIMC()
     }
     ejerBtn.onclick = () => {
 
@@ -93,9 +126,10 @@ function main(){
     const loggedUser = localStorage.getItem("loggedUser")
     console.log("Estoy en el main")
     if (loggedUser) {
-    // mostrar pantalla principal directamente
+        initMainMenu()
     } else {
     ingreso()
+    initMainMenu()
     }
 }
 
