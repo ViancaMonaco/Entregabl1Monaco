@@ -1,135 +1,123 @@
+/* 1. Reset y Estilos Base */
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f7f5;
+    /* Flexbox aquí centra TODO el contenido de la página */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* NAVBAR */
+/* 2. Navbar (Para que se mantenga arriba) */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 10px 40px;
     background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
-    margin: 0;
-    font-size: 28px;
-    color: #4CAF50; /* verde claro elegante */
+    color: #4CAF50; /* El verde de tu logo */
+    font-size: 24px;
 }
 
-.nav-buttons {
-    display: flex;
-    gap: 12px;
-}
-
-.nav-buttons button {
+.btn {
     padding: 8px 18px;
-    border-radius: 6px;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
-    font-weight: 500;
-    transition: 0.3s ease;
+    margin-left: 10px;
+    font-weight: 600;
 }
 
-/* Botón Login */
-#loginBtn {
-    background-color: #2E7D32; /* verde más oscuro */
-    color: white;
-}
+.btn-primary { background-color: #2e7d32; color: white; }
+.btn-secondary { background-color: #66bb6a; color: white; }
 
-#loginBtn:hover {
-    background-color: #256628;
-}
-
-/* Botón Register */
-#registerBtn {
-    background-color: #66BB6A;
-    color: white;
-}
-
-#registerBtn:hover {
-    background-color: #57a85b;
-}
-
-/* Línea divisoria */
-hr {
-    border: none;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin: 0;
-}
-
-/* Welcome Section */
-.welcome-section {
-    display: flex;
-    justify-content: center;
-    margin-top: 120px;
-}
-
-.welcome-section h2 {
-    background-color: white;
-    padding: 40px 60px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    color: #2E7D32;
-    font-weight: 500;
-}
-
-#registerSection {
-    min-height: 100vh;
+/* 3. Centrado de las Secciones de Autenticación */
+.auth-section {
+    flex-grow: 1; /* Ocupa el espacio restante para permitir centrado vertical */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f4f7f5;
+    padding: 20px;
 }
 
-.register-container {
-    background-color: white;
-    padding: 50px 40px;
+/* 4. La Tarjeta (Contenedor Blanco) */
+.auth-container {
+    background-color: #ffffff;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px; /* Ancho fijo para que se vean iguales */
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    width: 350px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
 
-.register-container h2 {
+.auth-container h2 {
     margin-bottom: 25px;
-    color: #2E7D32;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-#registerForm {
+/* 5. Formulario e Inputs (Verticales) */
+.auth-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; /* Espacio entre cada input */
 }
 
-#registerForm input {
-    padding: 10px;
-    border-radius: 6px;
+.auth-form input {
+    padding: 12px 15px;
     border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.auth-form input:focus {
+    border-color: #2e7d32;
+}
+
+/* Botones dentro del form */
+.auth-form button {
+    background-color: #2e7d32;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.auth-form button:hover {
+    background-color: #1b5e20;
+}
+
+/* Mensajes de error */
+.error-message {
+    color: #d32f2f;
+    margin-top: 15px;
     font-size: 14px;
 }
 
-#registerForm input:focus {
-    outline: none;
-    border-color: #66BB6A;
+/* Estilo para la sección de bienvenida */
+.welcome-section {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-#registerForm button {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: #2E7D32;
-    color: white;
-    cursor: pointer;
-    font-weight: 500;
-    transition: 0.3s ease;
-}
-
-#registerForm button:hover {
-    background-color: #256628;
+.welcome-section h2 {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    color: #2e7d32;
 }

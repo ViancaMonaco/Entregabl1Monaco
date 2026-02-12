@@ -1,6 +1,8 @@
-export function hideSection(hiddenSection){
+function hideSection(hiddenSection){
     document.getElementById(hiddenSection).style.display = "none"
 }
-export function showSection(showenSection){
+
+function showSection(showenSection){
     document.getElementById(showenSection).style.display = "flex"
 }
+
