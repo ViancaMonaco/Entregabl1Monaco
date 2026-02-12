@@ -121,3 +121,62 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     color: #2e7d32;
 }
+
+/* Contenedor de botones en el menú */
+.menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre botones */
+    width: 100%;
+}
+
+/* Estilo específico para los botones del menú */
+.btn-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    color: #2e7d32; /* Verde Nutri Monaco */
+    border: 2px solid #2e7d32;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-menu .icon {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+/* Efecto al pasar el mouse */
+.btn-menu:hover {
+    background-color: #2e7d32;
+    color: white;
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+}
+
+/* Estilo para los selectores para que coincidan con los inputs */
+.auth-form select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.auth-form select:focus {
+    border-color: #2e7d32;
+}
+
+/* Ajuste para inputs de tipo number */
+.auth-form input[type="number"] {
+    -moz-appearance: textfield;
+}
