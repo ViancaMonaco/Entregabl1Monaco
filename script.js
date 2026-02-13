@@ -14,6 +14,8 @@ function initRegister(){
         if(register(name, email, username, password)){
             localStorage.setItem("loggedUser", email)
             hideSection("registerError")
+            hideSection("registerSection")
+            mainMenu()
         }
         else{
             showSection("registerError")
@@ -33,6 +35,8 @@ function initLogIn(){
         if(login(email,pass)){
             localStorage.setItem("loggedUser", email)
             hideSection("errorLogin")
+            hideSection("loginSection")
+            mainMenu()
         }
         else{
             showSection("errorLogin")
@@ -81,6 +85,8 @@ function initMainMenu(){
 
     recipesBtn.onclick = () => {
         hideSection("mainMenuSection")
+        showSection("recipesSection")
+        renderRecipes(recipes)
     }
 
     exerciesBtn.onclick = () => {
@@ -105,18 +111,12 @@ function income(){
         hideSection("homeSection")
         showSection("registerSection")
         initRegister()
-        hideSection("registerSection")
-        mainMenu()
-
     }
 
     loginBtn.onclick = () =>{
         hideSection("homeSection")
         showSection("loginSection")
         initLogIn()
-        hideSection("loginSection")
-        mainMenu()
-
     }
 }
 

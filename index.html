@@ -5,6 +5,7 @@
     <title>Nutri Monaco</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="user.js" defer></script>
+    <script src="recetas.js" defer></script>
     <script src="ui2.js" defer></script>
     <script src="auth.js" defer></script>
     <script src="script.js" defer></script>
@@ -113,8 +114,13 @@
         </div>
     </section>
 
+    <section id="recipesSection" class="auth-section" style="display:none;">
+        <div class="recipes-layout">
+            <h2 class="section-title">Arma tu menú del día</h2>
+            <div id="recipesContainer" class="recipes-grid"></div>
+            <button id="btnBackFromRecipes" class="btn-secondary" style="margin-top: 20px;">Volver al Menú</button>
+        </div>
     </section>
-    <section id="recipesSection"></section>
     <section id="exerciseSection"></section>
     <section id="progressSection"></section>
 
