@@ -71,6 +71,18 @@ function initProfileComplete(){
     }
 }
 
+function initAddMenu(){
+    let addbutton = document.querySelectorAll("btn-add")
+    addbutton.forEach(button => {
+        button.onclick = (e) => {
+            const recipeID = e.currentTarget.id
+            let selectRecepi = getRecipeById(recipeID)
+            saveDailyRecepi(selectRecepi)
+            localStorage.setItem("dailymenu", JSON.stringify(dailyRecipes))
+        }
+    })
+}
+
 function initMainMenu(){
     const profileBtn = document.getElementById("btnCompleteProfile")
     const recipesBtn = document.getElementById("btnRecipes")
@@ -87,6 +99,7 @@ function initMainMenu(){
         hideSection("mainMenuSection")
         showSection("recipesSection")
         renderRecipes(recipes)
+        initAddMenu()
     }
 
     exerciesBtn.onclick = () => {

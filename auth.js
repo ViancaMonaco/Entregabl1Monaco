@@ -35,3 +35,14 @@ function completeProfile(userEmail, height, weight, sex, birthYear, activityLeve
     user.profile.goal = goal
     return true
 }
+
+function getRecipeById(recipeId){
+    if(!recipeId) return -1
+    const recipe = recipes.find(r => r.id==recipeId)
+    if(!recipe) return -1
+    return recipe
+}
+
+function saveDailyRecepi(recepi){
+    dailyRecipes.push(recepi)
+}

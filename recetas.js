@@ -96,3 +96,5 @@ const recipes = [
         link: "https://www.paulinacocina.net/lomo-saltado-2/42753#google_vignette"
     }
 ]
+
+let dailyRecipes = []
