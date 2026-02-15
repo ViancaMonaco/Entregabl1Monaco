@@ -265,3 +265,67 @@ body {
 .btn-add:hover {
     background-color: #1b5e20;
 }
+
+/* Estilos específicos para la lista del carrito */
+.cart-list {
+    width: 100%;
+    margin: 20px 0;
+    max-height: 400px; /* Por si el menú es muy largo, que tenga scroll */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border-left: 5px solid #2e7d32; /* El verde Nutri Monaco */
+    transition: transform 0.2s;
+}
+
+.cart-item:hover {
+    transform: scale(1.02);
+}
+
+.cart-item-info h4 {
+    margin: 0;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.cart-item-info span {
+    font-size: 0.8rem;
+    color: #2e7d32;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Botón de eliminar (la X) */
+.btn-remove {
+    background: #ffebee;
+    color: #c62828;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove:hover {
+    background: #d32f2f;
+    color: white;
+}
+
+.cart-footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

@@ -72,7 +72,7 @@ function initProfileComplete(){
 }
 
 function initAddMenu(){
-    let addbutton = document.querySelectorAll("btn-add")
+    let addbutton = document.querySelectorAll(".btn-add")
     addbutton.forEach(button => {
         button.onclick = (e) => {
             const recipeID = e.currentTarget.id
@@ -104,6 +104,10 @@ function initMainMenu(){
 
     exerciesBtn.onclick = () => {
         hideSection("mainMenuSection")
+        const recipes = JSON.parse(localStorage.getItem("dailymenu")) || []
+        console.log("desde storage:", recipes)
+        showSection("cartSection")
+        renderCart(recipes)
     }
 
     progressBtn.onclick = () => {
