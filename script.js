@@ -83,11 +83,83 @@ function initAddMenu(){
     })
 }
 
+function recipesMenu(){
+    hideSection("mainMenuSection")
+    showSection("recipesSection")
+        
+    let mealFilter = document.getElementById("mealFilter")
+    mealFilter.value = "all" 
+        
+    renderRecipes(recipes)
+    initAddMenu()
+    mealFilter.onchange = (e) => {
+        const selectedType = e.target.value
+        let filteredRecipes
+
+        if (selectedType === "all") {
+            filteredRecipes = recipes
+        } else {
+            filteredRecipes = recipes.filter(r => r.mealType.toLowerCase() === selectedType.toLowerCase())
+        }
+
+        renderRecipes(filteredRecipes)
+        initAddMenu()
+    }
+    let backBtn = document.getElementById("btnBackFromRecipes")
+    backBtn.onclick = () => {
+        hideSection("recipesSection")
+        showSection("mainMenuSection")
+    }
+}
+
+function initCartButtons() {
+    const btnBack = document.getElementById("btnBackToRecipes")
+    const btnConfirm = document.getElementById("btnConfirmMenu")
+
+    btnBack.onclick = () => {
+        hideSection("cartSection")
+        recipesMenu()
+    };
+
+    btnConfirm.onclick = () => {
+        const messageElement = document.getElementById("cartMessage")
+        if (dailyRecipes.length === 0){
+            messageElement.textContent = "Por favor, agrega al menos una receta para confirmar."
+            messageElement.style.color = "red"
+            return
+        }
+        messageElement.innerHTML = "¡Menú confirmado!"
+        hideSection("cartSection")
+        showSection("mainMenuSection")
+    }
+}
+
+function removeFromMenu(id) {
+    // 1. Filtramos el array global para quitar la receta seleccionada
+    dailyRecipes = dailyRecipes.filter(recipe => recipe.id != id);
+
+    // 2. Actualizamos el LocalStorage para que el cambio no se pierda al refrescar
+    localStorage.setItem("dailymenu", JSON.stringify(dailyRecipes));
+
+    // 3. Volvemos a renderizar el carrito para que desaparezca de la vista
+    renderCart(dailyRecipes);
+}
+// Definir la función globalmente para que el HTML pueda verla
+window.removeFromCart = function(id) {
+    // 1. Filtrar el array global (usando el nombre de tu variable global)
+    dailyRecipes = dailyRecipes.filter(recipe => recipe.id != id)
+
+    // 2. Actualizar LocalStorage
+    localStorage.setItem("dailymenu", JSON.stringify(dailyRecipes))
+
+    // 3. Re-renderizar la vista del carrito
+    renderCart(dailyRecipes)
+}
 function initMainMenu(){
     const profileBtn = document.getElementById("btnCompleteProfile")
     const recipesBtn = document.getElementById("btnRecipes")
-    const exerciesBtn = document.getElementById("btnExercises")
-    const progressBtn = document.getElementById("btnProgress")
+    const dailyMenuBtn = document.getElementById("btnDailyMenu")
+    const closeSessionBtn = document.getElementById("btnCloseSession")
 
     profileBtn.onclick = () =>{
         hideSection("mainMenuSection")
@@ -96,44 +168,21 @@ function initMainMenu(){
     }
 
     recipesBtn.onclick = () => {
-        hideSection("mainMenuSection")
-        showSection("recipesSection")
-        
-        // 1. Resetear el filtro a "Todas" al entrar por primera vez
-        mealFilter.value = "all" 
-        
-        // 2. Mostrar todas las recetas inicialmente
-        renderRecipes(recipes)
-        initAddMenu()
-        mealFilter.onchange = (e) => {
-            const selectedType = e.target.value;
-            let filteredRecipes;
-
-            if (selectedType === "all") {
-                filteredRecipes = recipes;
-            } else {
-                // Filtramos el array global 'recipes'
-                filteredRecipes = recipes.filter(r => r.mealType.toLowerCase() === selectedType.toLowerCase());
-            }
-
-            // Re-renderizamos con el nuevo grupo
-            renderRecipes(filteredRecipes);
-            
-            // ¡IMPORTANTE! Re-activamos los eventos de click en los nuevos botones
-            initAddMenu(); 
-        }
+        recipesMenu()
     }
 
-    exerciesBtn.onclick = () => {
+    dailyMenuBtn.onclick = () => {
         hideSection("mainMenuSection")
         const recipes = JSON.parse(localStorage.getItem("dailymenu")) || []
-        console.log("desde storage:", recipes)
         showSection("cartSection")
         renderCart(recipes)
+        initCartButtons()
     }
 
-    progressBtn.onclick = () => {
+    closeSessionBtn.onclick = () => {
         hideSection("mainMenuSection")
+        localStorage.removeItem("loggedUser")
+        showSection("homeSection")
     }
 }
 
