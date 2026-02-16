@@ -1,6 +1,6 @@
 # Nutri Monaco 🍏
 
-Proyecto realizado en JavaScript como Entregable 1.
+Proyecto realizado en JavaScript como Entregable 2.
 
 Aplicación web desarrollada en JavaScript que permite a los usuarios gestionar hábitos saludables mediante el registro de recetas
 Funcionalidades principales:
