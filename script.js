@@ -98,8 +98,30 @@ function initMainMenu(){
     recipesBtn.onclick = () => {
         hideSection("mainMenuSection")
         showSection("recipesSection")
+        
+        // 1. Resetear el filtro a "Todas" al entrar por primera vez
+        mealFilter.value = "all" 
+        
+        // 2. Mostrar todas las recetas inicialmente
         renderRecipes(recipes)
         initAddMenu()
+        mealFilter.onchange = (e) => {
+            const selectedType = e.target.value;
+            let filteredRecipes;
+
+            if (selectedType === "all") {
+                filteredRecipes = recipes;
+            } else {
+                // Filtramos el array global 'recipes'
+                filteredRecipes = recipes.filter(r => r.mealType.toLowerCase() === selectedType.toLowerCase());
+            }
+
+            // Re-renderizamos con el nuevo grupo
+            renderRecipes(filteredRecipes);
+            
+            // ¡IMPORTANTE! Re-activamos los eventos de click en los nuevos botones
+            initAddMenu(); 
+        }
     }
 
     exerciesBtn.onclick = () => {

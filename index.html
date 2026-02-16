@@ -114,13 +114,25 @@
         </div>
     </section>
 
-    <section id="recipesSection" class="auth-section" style="display:none;">
+   <section id="recipesSection" class="auth-section" style="display:none;">
         <div class="recipes-layout">
             <h2 class="section-title">Arma tu menú del día</h2>
+            
+            <div class="filter-container">
+                <label for="mealFilter">Filtrar por tipo:</label>
+                <select id="mealFilter" class="filter-select">
+                    <option value="all">Todas</option>
+                    <option value="desayuno">Desayuno</option>
+                    <option value="almuerzo">Almuerzo</option>
+                    <option value="cena">Cena</option>
+                </select>
+            </div>
+
             <div id="recipesContainer" class="recipes-grid"></div>
+            
             <button id="btnBackFromRecipes" class="btn-secondary" style="margin-top: 20px;">Volver al Menú</button>
         </div>
-    </section>
+</section>
     <section id="cartSection" class="auth-section" style="display:none;">
         <div class="auth-container" style="max-width: 600px;"> <h2 class="section-title">Mi Menú del Día</h2>
             

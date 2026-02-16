@@ -97,4 +97,4 @@ const recipes = [
     }
 ]
 
-let dailyRecipes = []
+let dailyRecipes = JSON.parse(localStorage.getItem("dailymenu")) || [];

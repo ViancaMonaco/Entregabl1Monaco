@@ -43,6 +43,10 @@ function getRecipeById(recipeId){
     return recipe
 }
 
-function saveDailyRecepi(recepi){
+function saveDailyRecepi(recepi) {
+    dailyRecipes = JSON.parse(localStorage.getItem("dailymenu")) || []
     dailyRecipes.push(recepi)
+
+    localStorage.setItem("dailymenu", JSON.stringify(dailyRecipes))
+    console.log("Menú actualizado en disco y memoria")
 }
